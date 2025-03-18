@@ -15,10 +15,12 @@ export class Game extends Scene {
     catThought: any;
     catt = 0;
     sauul = 0;
+    bidenblastnumber = 0;
     walterWhiteImage: Phaser.GameObjects.Image; // Add this line
     hahacat: Phaser.GameObjects.Image; // Add this line
     gokuu: Phaser.GameObjects.Image; // Add this line
     good: Phaser.GameObjects.Image; // Add this line
+    biden: Phaser.GameObjects.Image; // Add this line
     constructor() {
         super('Game');
     }
@@ -29,6 +31,7 @@ export class Game extends Scene {
         this.load.image('hahacat', 'assets/OIP.jpg'); // Add this line
         this.load.image('goku', 'assets/goku.jpg'); // Add this line
         this.load.image('good', 'assets/goodman.jpg'); // Add this line
+        this.load.image('biden', 'assets/biden.jpg'); // Add this line
     }
 
     create() {
@@ -141,6 +144,7 @@ export class Game extends Scene {
         const pro = this.sound.add('pro'); // Add the audio to the scene
         const hah = this.sound.add('hah'); // Add the audio to the scene
         const sualtheme = this.sound.add('sualtheme'); // Add the audio to the scene
+        const full = this.sound.add('full'); // Add the audio to the scene
 
         // Add the game over image and make it invisible initially
         this.gameOverImage = this.add.image(856, 460, 'gameOver').setScale(1.1);
@@ -182,6 +186,8 @@ export class Game extends Scene {
         this.hahacat.setVisible(false);
         this.good = this.add.image(958, 460, 'good').setScale(2.6);
         this.good.setVisible(false);
+        this.biden = this.add.image(958, 460, 'biden').setScale(4);
+        this.biden.setVisible(false);
 
         // Add key press event
         this.input.keyboard.on('keydown-W', () => {
@@ -211,6 +217,13 @@ export class Game extends Scene {
             this.good.setVisible(!this.good.visible);
             sualtheme.play();
             this.sauul += 1;
+            }
+        });
+        this.input.keyboard.on('keydown-B', () => {
+            if (this.bidenblastnumber === 0) {
+            this.biden.setVisible(!this.biden.visible);
+            full.play();
+            this.bidenblastnumber += 1;
             }
         });
     }
